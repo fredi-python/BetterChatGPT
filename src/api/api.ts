@@ -45,11 +45,12 @@ export const getChatCompletion = async (
     method: 'POST',
     headers,
     body: JSON.stringify({
-      messages,
-      ...config,
-      max_tokens: undefined,
+        messages,
+        ...config,
+        max_tokens: undefined,
     }),
-  });
+    redirect: 'follow', // or 'error' or 'manual'
+});
   if (!response.ok) throw new Error(await response.text());
 
   const data = await response.json();
